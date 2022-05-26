@@ -2,15 +2,19 @@
 import './App.css';
 import logo from './imagenes/fcc-logo.png'
 import Button from './component/Button';
+import Contador from './component/Contador';
+import { useState } from 'react';
 
 function App() {
 
+  const[numClics, setNumClics] = useState(0);
+
   const manejarClic = () =>{
-    alert('hola bobo')
+    setNumClics(numClics + 1);
   }
 
   const reiniciarContador = () =>{
-    alert('Reiniciando...')
+    setNumClics(0);
   }
 
   return (
@@ -24,6 +28,7 @@ function App() {
       </div>
 
       <div className='contenedor-principal'>
+        <Contador numClics={numClics}/>
         <Button text="Clic" btnClick={true} click={manejarClic}/>
         <Button text="Reiniciar" btnClick={false} click={reiniciarContador}/>
       </div>
